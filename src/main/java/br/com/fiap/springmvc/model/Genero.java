@@ -9,9 +9,9 @@ public enum Genero {
     BIOGRAFIA("Biografia"),
     FILOSOFIA("Filosofia"),
     RELIGIOSO("Religioso"),
-    HISTORIA("Historia"),
-    CIENCIA("Ciencia"),
-    DIDATICO("Didatico");
+    HISTORIA("História"),
+    CIENCIA("Ciência"),
+    DIDATICO("Didático");
 
     private final String descricao;
 

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="htp://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Livros</title>
+</head>
+<body>
+<h2>Lista de Livros</h2>
+<br>
+<table>
+    <thead>
+    <tr>
+        <th>Dados do Livro</th>
+        <th>Ações</th>
+    </tr>
+
+    <th th:each="livro: ${listaLivros}">
+    <td th:text="${livro.autor} + ' - '${livro.titulo}"></td>
+    <td><butt th:attr="onclick=|showModal('infoModal' + ${livro.id})">+ info</butt></td>
+    </th>
+
+    </thead>
+</table>
+
+<div th:each="livro : ${listaLivros}" th:attr="id=${'infoModal' + livro.id}" style="display: none ">
+    <p>
+        ID: <span th:text="${livro.id}"></span><br>
+        Titulo: <span th:text="${livro.titulo}"></span><br>
+        Autor: <span th:text="${livro.autor}"></span><br>
+        Gênero: <span th:text="${livro.genero.descricao}"></span><br>
+        Páginas: <span th:text="${livro.paginas}"></span><br>
+        Editora: <span th:text="${livro.editora}"></span><br>
+        ISBN: <span th:text="${livro.isbn}"></span><br>
+        Data de publicação: <span th:text="${livro.dataPublicacao}"></span><br>
+        Preço: <span th:text="${livro.preco}"></span><br>
+
+        <a th:href="@{/livros/cadastro/{id}(id = $({livro.id})}">Editar</a>
+        Deletar
+    </p>
+    Fechar
+</div>
+
+</body>
+</html>
