@@ -8,27 +8,27 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
-import java.time.LocalDate;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
 public class Livro {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID        id;
+    private UUID id;
     @NotBlank(message = "O título é obrigatório")
-    private String      titulo;
+    private String titulo;
     @NotBlank(message = "O autor é obrigatório")
-    private String      autor;
+    private String autor;
     @NotNull(message = "O gênero é obrigatório")
-    private Genero      genero;
-    private Integer     paginas;
-    private String      editora;
-    @Pattern(regexp = "^970\\d{7}$|^970\\d{10}$")
-    private String      isbn;
-    private LocalDate   dataPublicacao;
-    private BigDecimal  preco;
+    private Genero genero;
+    private Integer paginas;
+    private String editora;
+    @Pattern(regexp = "^970\\d{7}$|^970\\d{10}$", message = "ISBN em formato incorreto") //ISBN 10 ou 13 iniciado em 970
+    private String isbn;
+    private LocalDate dataPublicacao;
+    private BigDecimal preco;
 
     public UUID getId() {
         return id;
